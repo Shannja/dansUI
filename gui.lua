@@ -14,9 +14,13 @@ if game.PlaceId == 11708967881 then
     end
     local Main = Window:NewTab("Main")
     local Farming = Main:NewSection("Farming")
-    Farming:NewButton("Stars Auto Collect", "Auto Collects the Stars.", function()
-        getgenv().Stars = val
-        Collect()
+    Farming:NewToggle("Auto Collect Stars", "Auto collects stars.", function(state)
+        if state then
+            getgenv().Stars = val
+            Collect()
+        else
+            getgenv().Stars = false
+        end
     end)
 else
     local Tab = Window:NewTab("")
